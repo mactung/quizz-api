@@ -1,5 +1,5 @@
 <div class="modal fade show" id="modal-xl" style="display: none;" aria-modal="true">
-<div class="modal-dialog modal-xl">
+<div class="modal-dialog modal-md">
     <div class="modal-content">
     <div class="modal-header">
         <h4 class="modal-title">Extra Large Modal</h4>
