@@ -19,6 +19,7 @@
                 </div>
             <!-- /.card-header -->
                 <div class="card-body">
+                    @include('quiz.inc.filter')
 
                     <div class="mb-3 mt-3 row">
                         <div class="col-10">

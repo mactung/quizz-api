@@ -8,41 +8,17 @@ app.controller(
             $rootScope
         );
         $scope.quizs = [];
-        $scope.quiz = {
-            title: "",
-            fact: "",
-            image_url: "",
-            category_id: "",
-            level: 0,
-        };
+        $scope.quiz;
         $scope.mode;
         $scope.categories = [];
         $scope.categoriesObj = {};
         $scope.selectedCategory;
-        $scope.selectedLevel = {
-            value: 1,
-            title: "Level 1",
+        $scope.selectedLevel;
+        $scope.selectedLanguage = {
+            value: "en",
+            title: "English",
         };
-        $scope.answers = [
-            {
-                content: "",
-                is_correct: false,
-            },
-            {
-                content: "",
-                is_correct: false,
-            },
-            {
-                content: "",
-                is_correct: false,
-            },
-            {
-                content: "",
-                is_correct: false,
-            },
-        ];
-        $scope.tempVocabularys = {};
-        $scope.searchText = null;
+        $scope.answers;
         $scope.levels = [
             {
                 value: 1,
@@ -57,23 +33,34 @@ app.controller(
                 title: "Level 3",
             },
         ];
+        $scope.languages = [
+            {
+                value: "vi",
+                title: "Vietnamese",
+            },
+            {
+                value: "en",
+                title: "English",
+            },
+        ];
         $scope.init = () => {
             $scope.getCategories().then(() => {
                 $scope.getQuizs();
+                $scope.resetDataCreate();
             });
         };
 
         $scope.getCategories = () => {
             return $http.get("api/category").then((res) => {
                 $scope.categories = res.data.result;
-                $scope.selectedCategory = $scope.categories[0];
                 $scope.categories.forEach((c) => {
                     $scope.categoriesObj[String(c.id)] = c;
-                })
+                });
             });
         };
         $scope.getQuizs = () => {
-            $http.get("api/quiz?embeds=answers").then((res) => {
+            let filters = $scope.buildFilter();
+            $http.get("api/quiz?embeds=answers&filters=" + filters).then((res) => {
                 $scope.quizs = res.data.result;
             });
         };
@@ -97,8 +84,10 @@ app.controller(
                                 return $http.post("api/answer", answer);
                             })
                         );
-                    }).then(() => {
+                    })
+                    .then(() => {
                         toastr.success("Tạo thành công!");
+                        $scope.resetDataCreate();
                     })
                     .catch((err) => console.log(err));
             }
@@ -115,7 +104,10 @@ app.controller(
                                     answer.is_correct = false;
                                 }
                                 answer.quiz_id = quizId;
-                                return $http.put("api/answer/" + answer.id, answer);
+                                return $http.put(
+                                    "api/answer/" + answer.id,
+                                    answer
+                                );
                             })
                         );
                     })
@@ -129,7 +121,15 @@ app.controller(
         $scope.buildCreateData = () => {
             $scope.quiz.category_id = $scope.selectedCategory.id;
             $scope.quiz.level = $scope.selectedLevel.value;
+            $scope.quiz.language = $scope.selectedLanguage.value;
             return $scope.quiz;
+        };
+
+        $scope.buildFilter = () => {
+            let filters = '';
+            filters += "language=" + $scope.selectedLanguage.value;
+            return filters;
+
         };
 
         $scope.openModal = (mode, quiz) => {
@@ -178,7 +178,36 @@ app.controller(
             }
         };
 
-        $scope.resetDataCreate = () => {};
+        $scope.resetDataCreate = () => {
+            $scope.quiz = {
+                title: "",
+                fact: "",
+                image_url: "",
+                category_id: "",
+            };
+            $scope.selectedLevel = {
+                value: 1,
+                title: "Level 1",
+            };
+            $scope.answers = [
+                {
+                    content: "",
+                    is_correct: false,
+                },
+                {
+                    content: "",
+                    is_correct: false,
+                },
+                {
+                    content: "",
+                    is_correct: false,
+                },
+                {
+                    content: "",
+                    is_correct: false,
+                },
+            ];
+        };
 
         $scope.init();
     }

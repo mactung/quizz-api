@@ -4,7 +4,7 @@
             <div class="input-group mb-3">
                 <select class="custom-select"
                     ng-options="level as level.title for level in levels track by level.value"
-                    ng-model="filter.currentLevel">
+                    ng-model="selectedLevel">
                     <option value="">Chọn Level</option>
                 </select>
             </div>
@@ -13,7 +13,7 @@
             <div class="input-group mb-3">
                 <select class="custom-select"
                     ng-options="category as category.name for category in categories track by category.id"
-                    ng-model="filter.currentCategory">
+                    ng-model="selectedCategory">
                     <option value="">Chọn Category</option>
                 </select>
             </div>
@@ -21,17 +21,8 @@
         <div class="col-3">
             <div class="input-group mb-3">
                 <select class="custom-select"
-                    ng-options="isNormal as isNormal.title for isNormal in isNormals track by isNormal.value"
-                    ng-model="filter.isNormal">
-                    <option value="">Chọn theo độ phổ biến</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group mb-3">
-                <select class="custom-select"
                     ng-options="language as language.title for language in languages track by language.value"
-                    ng-model="filter.currentLanguage">
+                    ng-model="selectedLanguage">
                 </select>
             </div>
         </div>

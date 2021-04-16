@@ -57,18 +57,25 @@
             </div>
         </div>
         <div  class="row">
-            <div class="input-group mb-3 col-6">
+            <div class="input-group mb-3 col-4">
                 <select class="custom-select"
                     ng-options="item as item.name for item in categories track by item.id" ng-model="selectedCategory"
                 >
                     <option value="">Chọn Level</option>
                 </select>
             </div>
-            <div class="input-group mb-3 col-6">
+            <div class="input-group mb-3 col-4">
                 <select class="custom-select"
                     ng-options="item as item.title for item in levels track by item.value" ng-model="selectedLevel"
                 >
                     <option value="">Chọn Level</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 col-4">
+                <select class="custom-select"
+                    ng-options="item as item.title for item in languages track by item.value" ng-model="selectedLevel"
+                >
+                    <option value="">Chọn Language</option>
                 </select>
             </div>
         </div>
