@@ -38,11 +38,11 @@
                         <thead>
                             <tr>
                                 <th style="width: 2%">#</th>
-                                <th style="width: 8%">Title</th>
-                                <th style="width: 50%">Answers</th>
+                                <th style="width: 30%">Title</th>
+                                <th style="width: 30%">Answers</th>
                                 <th>Level</th>
-                                <th style="width: 10%">Category</th>
-                                <th style="width: 20%">Image</th>
+                                <th style="width: 8%">Category</th>
+                                <th style="width: 15%">Image</th>
                                 <th style="width: 8%">Options</th>
                             </tr>
                             
@@ -52,7 +52,9 @@
                                 <td ng-bind="quiz.id"></td>
                                 <td ng-bind="quiz.title"></td>
                                 <td>
-                                    <div ng-repeat="answer in quiz.answers" ng-bind="answer.content"></div>
+                                    <div ng-repeat="answer in quiz.answers track by $index"> - @{{ answer.content }}
+                                    <span ng-show="answer.is_correct == 1"><i class="fa fa-check"></i></span>
+                                    </div>
                                 </td>
                                 <td ng-bind="quiz.level"></td>
                                 <td ng-bind="quiz.category_id"></td>
