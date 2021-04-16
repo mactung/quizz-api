@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/category" class="nav-link">
+                    <a href="/quiz" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Category
