@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,7 @@ Route::get('/', function () {
 
 Route::prefix('quiz')->group(function () {
     Route::get('/', [QuizController::class, 'index']);
+});
+Route::prefix('category')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
 });
