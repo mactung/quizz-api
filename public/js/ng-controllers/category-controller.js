@@ -11,9 +11,6 @@ app.controller(
         $scope.categories = [];
         $scope.selectedCategory;
         $scope.categoryName;
-
-        $scope.searchText = null;
-
         $scope.init = () => {
             $scope.getCategories();
         };

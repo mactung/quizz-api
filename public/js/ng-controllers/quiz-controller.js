@@ -17,6 +17,7 @@ app.controller(
         };
         $scope.mode;
         $scope.categories = [];
+        $scope.categoriesObj = {};
         $scope.selectedCategory;
         $scope.selectedLevel = {
             value: 1,
@@ -66,6 +67,9 @@ app.controller(
             return $http.get("api/category").then((res) => {
                 $scope.categories = res.data.result;
                 $scope.selectedCategory = $scope.categories[0];
+                $scope.categories.forEach((c) => {
+                    $scope.categoriesObj[String(c.id)] = c;
+                })
             });
         };
         $scope.getQuizs = () => {
