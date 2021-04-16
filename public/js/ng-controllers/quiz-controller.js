@@ -138,5 +138,13 @@ app.controller("QuizController", function ($scope, $timeout, $http, $rootScope) 
         }
     };
 
+    $scope.removeQuiz = (quiz) => {
+        $http.delete('/api/quiz/' + quiz.id).then(() => {
+            quiz.answers.forEach(answer => {
+                $http.delete('api/answer/' + answer.id);
+            })
+        })
+    }
+
     $scope.init();
 });

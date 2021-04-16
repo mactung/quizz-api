@@ -68,9 +68,10 @@
 
                                     <button
                                         class="btn-sm btn-danger" 
-                                        ng-click="delete(vocabulary, $index)">
+                                        ng-click="removeQuiz(quiz)">
                                         <i class="fa fa-times"></i>
-                                    </button></td>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     {{-- <tfoot>
