@@ -78,13 +78,6 @@
                     <option value="">Chọn Language</option>
                 </select>
             </div>
-            <div class="input-group mb-3 col-4">
-                <select class="custom-select"
-                    ng-options="item as item.title for item in nations track by item.value" ng-model="selectedNation"
-                >
-                    <option value="">Chọn quốc gia</option>
-                </select>
-            </div>
         </div>
     </div>
     <div class="modal-footer justify-content-between">

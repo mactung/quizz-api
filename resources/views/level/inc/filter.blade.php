@@ -21,15 +21,6 @@
         <div class="col-3">
             <div class="input-group mb-3">
                 <select class="custom-select"
-                    ng-options="item as item.title for item in nations track by item.value"
-                    ng-model="selectedNation">
-                    <option value="">Chọn quốc gia</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group mb-3">
-                <select class="custom-select"
                     ng-options="language as language.title for language in languages track by language.value"
                     ng-model="selectedLanguage">
                 </select>

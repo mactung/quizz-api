@@ -53,6 +53,24 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/level" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Level
+                            <!-- <span class="right badge badge-danger">New</span> -->
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/mission" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Mission
+                            <!-- <span class="right badge badge-danger">New</span> -->
+                        </p>
+                    </a>
+                </li>
                 
                 <!-- <li class="nav-item">
                     <a href="#" class="nav-link">

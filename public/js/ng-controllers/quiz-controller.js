@@ -14,6 +14,7 @@ app.controller(
         $scope.categoriesObj = {};
         $scope.selectedCategory;
         $scope.selectedLevel;
+        $scope.selectedNation;
         $scope.selectedLanguage = {
             value: "en",
             title: "English",
@@ -41,6 +42,20 @@ app.controller(
             {
                 value: "en",
                 title: "English",
+            },
+        ];
+        $scope.nations = [
+            {
+                value: "vietnam",
+                title: "Việt Nam",
+            },
+            {
+                value: "england",
+                title: "England",
+            },
+            {
+                value: "us",
+                title: "American",
             },
         ];
         $scope.init = () => {
