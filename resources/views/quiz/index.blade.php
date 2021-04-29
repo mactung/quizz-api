@@ -62,7 +62,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-nowrap" ng-bind="quiz.fact"></span>
+                                    <span style="height: 200px;" ng-bind="quiz.fact"></span>
                                 </td>
                                 <td ng-bind="quiz.level"></td>
                                 <td ng-bind="categoriesObj[quiz.category_id].name"></td>
