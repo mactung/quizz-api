@@ -49,36 +49,38 @@
                     <input type="text" class="form-control" ng-model="answers[3].content">
                 </div>
             </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Title" 
-                    aria-label="Fact" 
-                    aria-describedby="basic-addon2"
-                    ng-model="quiz.fact">
+            <div class="form-group mb-3 w-100 p-3">
+                <label for="exampleFormControlTextarea1">Fact</label>
+                <textarea class="form-control rounded-0" 
+                    id="exampleFormControlTextarea1" rows="10"
+                    ng-model="quiz.fact"
+                ></textarea>
             </div>
+
         </div>
         <div  class="row">
-            <div class="input-group mb-3 col-4">
+            <div class="input-group mb-3 col-3">
                 <select class="custom-select"
                     ng-options="item as item.name for item in categories track by item.id" ng-model="selectedCategory"
                 >
                     <option value="">Chọn Category</option>
                 </select>
             </div>
-            <div class="input-group mb-3 col-4">
+            <div class="input-group mb-3 col-3">
                 <select class="custom-select"
                     ng-options="item as item.title for item in levels track by item.value" ng-model="selectedLevel"
                 >
                     <option value="">Chọn Level</option>
                 </select>
             </div>
-            <div class="input-group mb-3 col-4">
+            <div class="input-group mb-3 col-3">
                 <select class="custom-select"
                     ng-options="item as item.title for item in languages track by item.value" ng-model="selectedLanguage"
                 >
                     <option value="">Chọn Language</option>
                 </select>
             </div>
-            <div class="input-group mb-3 col-4">
+            <div class="input-group mb-3 col-3">
                 <select class="custom-select"
                     ng-options="item as item.title for item in nations track by item.value" ng-model="selectedNation"
                 >

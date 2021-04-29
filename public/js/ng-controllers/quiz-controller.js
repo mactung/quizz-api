@@ -15,6 +15,7 @@ app.controller(
         $scope.selectedCategory;
         $scope.selectedLevel;
         $scope.selectedNation;
+        $scope.correctAnswer;
         $scope.selectedLanguage = {
             value: "en",
             title: "English",
@@ -81,7 +82,41 @@ app.controller(
         };
 
         $scope.createQuiz = () => {
+
+            if (!$scope.quiz.title) {
+                toastr.warning("Cần điền tiêu đề câu hỏi!");
+                return;
+            }
+            if (!$scope.correctAnswer) {
+                toastr.warning("Cần chọn câu trả lời đúng!");
+                return;
+            }
+            if ($scope.verifyAnswers($scope.answers)){
+                toastr.warning("Cần điền câu trả lời!");
+                return;
+            }
+            if (!$scope.quiz.fact) {
+                toastr.warning("Cần điền Fact!");
+                return;
+            }
+            if (!$scope.selectedCategory) {
+                toastr.warning("Cần chọn chủ đề!");
+                return;
+            }
+            if (!$scope.selectedLevel) {
+                toastr.warning("Cần chọn level!");
+                return;
+            }
+            if (!$scope.selectedLanguage) {
+                toastr.warning("Cần chọn ngôn ngữ!");
+                return;
+            }
+            if (!$scope.selectedNation) {
+                toastr.warning("Cần chọn quốc gia!");
+                return;
+            }
             const quiz = $scope.buildCreateData();
+
             let quizId = null;
             if ($scope.mode === "create") {
                 $http
@@ -137,6 +172,8 @@ app.controller(
             $scope.quiz.category_id = $scope.selectedCategory.id;
             $scope.quiz.level = $scope.selectedLevel.value;
             $scope.quiz.language = $scope.selectedLanguage.value;
+            $scope.quiz.nation = $scope.selectedNation.value;
+            
             return $scope.quiz;
         };
 
@@ -157,7 +194,6 @@ app.controller(
                 $scope.answers = quiz.answers;
                 $scope.answers.forEach((answer, index) => {
                     if (answer.is_correct === 1) {
-                        console.log(index);
                         $scope.correctAnswer = String(index);
                     }
                 });
@@ -204,6 +240,7 @@ app.controller(
                 value: 1,
                 title: "Level 1",
             };
+            $scope.selectedCategory = null;
             $scope.answers = [
                 {
                     content: "",
@@ -222,7 +259,18 @@ app.controller(
                     is_correct: false,
                 },
             ];
+            $scope.correctAnswer = null;
         };
+
+        $scope.verifyAnswers = (answers) => {
+            let result = false;
+            answers.forEach((answer) => {
+                if(answer.content == ''){
+                    result = true;
+                }
+            })
+            return result;
+        }
 
         $scope.init();
     }
