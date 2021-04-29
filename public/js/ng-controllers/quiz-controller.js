@@ -65,6 +65,10 @@ app.controller(
                 value: "us",
                 title: "American",
             },
+            {
+                value: "singapore",
+                title: "Singapore",
+            },
         ];
         $scope.init = () => {
             $scope.getCategories().then(() => {
