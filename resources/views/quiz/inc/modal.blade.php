@@ -13,7 +13,13 @@
                 <input type="text" class="form-control" placeholder="Title" 
                     aria-label="Title" 
                     aria-describedby="basic-addon2"
-                    ng-model="quiz.title">
+                    ng-model="quiz.title"
+                    ng-model-options='{ debounce: 1000 }'
+                    ng-change="searchQuiz()">
+            </div>
+            <div class="row flex-column ml-3 mr-3 mb-3 w-100 pl-2" ng-show="relatedQuizs.length > 0">
+                <span class="font-weight-bold">Câu hỏi tương tự: </span>
+                <span class="border-bottom  pt-1 pb-1" ng-repeat="quiz in relatedQuizs" ng-bind="quiz.title"><span>
             </div>
             <div class="custom-control custom-radio w-100">
                 <div class="input-group mb-1">

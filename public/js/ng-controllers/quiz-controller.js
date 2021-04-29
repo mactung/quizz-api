@@ -14,6 +14,7 @@ app.controller(
         $scope.categoriesObj = {};
         $scope.selectedCategory;
         $scope.selectedLevel;
+        $scope.relatedQuizs = [];
         $scope.selectedNation = {
             value: "global",
             title: "Chung",
@@ -271,7 +272,17 @@ app.controller(
                     is_correct: false,
                 },
             ];
+            $scope.relatedQuizs = [];
             $scope.correctAnswer = null;
+        };
+
+        $scope.searchQuiz = () => {
+            console.log("find");
+            $http
+                .get("/api/quiz?filters=title$" + $scope.quiz.title + "*")
+                .then((res) => {
+                    $scope.relatedQuizs = res.data.result;
+                });
         };
 
         $scope.verifyAnswers = (answers) => {
