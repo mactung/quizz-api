@@ -5,6 +5,8 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +21,26 @@ use App\Http\Controllers\MissionController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
 Route::get('/login', function () {
     return view('auth.login');
 });
-Route::post('/login', function () {
-    return view('auth.login');
-})->name('login');
-Route::get('/password', function(){})->name('password.request');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 
-Route::prefix('quiz')->group(function () {
+// Route::post('/register', [RegisterController::class,'create']);
+
+// Route::get('/password', function(){})->name('password.request');
+
+Route::prefix('quiz')->middleware('auth')->group(function () {
     Route::get('/', [QuizController::class, 'index']);
 });
-Route::prefix('category')->group(function () {
+Route::prefix('category')->middleware('auth')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
 });
-Route::prefix('level')->group(function () {
+Route::prefix('level')->middleware('auth')->group(function () {
     Route::get('/', [LevelController::class, 'index']);
 });
-Route::prefix('mission')->group(function () {
+Route::prefix('mission')->middleware('auth')->group(function () {
     Route::get('/', [MissionController::class, 'index']);
 });
