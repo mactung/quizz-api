@@ -28,7 +28,7 @@ Route::get('/login', function () {
 });
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 
-// Route::post('/register', [RegisterController::class,'create']);
+Route::post('/register', [RegisterController::class,'create']);
 
 // Route::get('/password', function(){})->name('password.request');
 
