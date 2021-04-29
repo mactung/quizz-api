@@ -14,7 +14,10 @@ app.controller(
         $scope.categoriesObj = {};
         $scope.selectedCategory;
         $scope.selectedLevel;
-        $scope.selectedNation;
+        $scope.selectedNation = {
+            value: "global",
+            title: "Chung",
+        };
         $scope.correctAnswer;
         $scope.selectedLanguage = {
             value: "vi",
@@ -47,6 +50,10 @@ app.controller(
         ];
         $scope.nations = [
             {
+                value: "global",
+                title: "Chung",
+            },
+            {
                 value: "vietnam",
                 title: "Việt Nam",
             },
@@ -76,13 +83,14 @@ app.controller(
         };
         $scope.getQuizs = () => {
             let filters = $scope.buildFilter();
-            $http.get("api/quiz?embeds=answers&filters=" + filters).then((res) => {
-                $scope.quizs = res.data.result;
-            });
+            $http
+                .get("api/quiz?embeds=answers&filters=" + filters)
+                .then((res) => {
+                    $scope.quizs = res.data.result;
+                });
         };
 
         $scope.createQuiz = () => {
-
             if (!$scope.quiz.title) {
                 toastr.warning("Cần điền tiêu đề câu hỏi!");
                 return;
@@ -91,7 +99,7 @@ app.controller(
                 toastr.warning("Cần chọn câu trả lời đúng!");
                 return;
             }
-            if ($scope.verifyAnswers($scope.answers)){
+            if ($scope.verifyAnswers($scope.answers)) {
                 toastr.warning("Cần điền câu trả lời!");
                 return;
             }
@@ -173,15 +181,14 @@ app.controller(
             $scope.quiz.level = $scope.selectedLevel.value;
             $scope.quiz.language = $scope.selectedLanguage.value;
             $scope.quiz.nation = $scope.selectedNation.value;
-            
+
             return $scope.quiz;
         };
 
         $scope.buildFilter = () => {
-            let filters = '';
+            let filters = "";
             filters += "language=" + $scope.selectedLanguage.value;
             return filters;
-
         };
 
         $scope.openModal = (mode, quiz) => {
@@ -265,12 +272,12 @@ app.controller(
         $scope.verifyAnswers = (answers) => {
             let result = false;
             answers.forEach((answer) => {
-                if(answer.content == ''){
+                if (answer.content == "") {
                     result = true;
                 }
-            })
+            });
             return result;
-        }
+        };
 
         $scope.init();
     }
