@@ -17,8 +17,8 @@ app.controller(
         $scope.selectedNation;
         $scope.correctAnswer;
         $scope.selectedLanguage = {
-            value: "en",
-            title: "English",
+            value: "vi",
+            title: "Vietnamese",
         };
         $scope.answers;
         $scope.levels = [
