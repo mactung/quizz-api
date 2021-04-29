@@ -279,7 +279,7 @@ app.controller(
         $scope.searchQuiz = () => {
             console.log("find");
             $http
-                .get("/api/quiz?filters=title$" + $scope.quiz.title)
+                .get("/api/quiz?filters=title~" + $scope.quiz.title)
                 .then((res) => {
                     $scope.relatedQuizs = res.data.result;
                 });

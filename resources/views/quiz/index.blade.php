@@ -61,7 +61,9 @@
                                         @{{ answer.content }}
                                     </div>
                                 </td>
-                                <td ng-bind="quiz.fact"></td>
+                                <td>
+                                    <span class="text-nowrap" ng-bind="quiz.fact"></span>
+                                </td>
                                 <td ng-bind="quiz.level"></td>
                                 <td ng-bind="categoriesObj[quiz.category_id].name"></td>
                                 <td ng-bind="quiz.image_url"></td>
