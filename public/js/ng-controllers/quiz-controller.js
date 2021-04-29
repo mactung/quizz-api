@@ -194,6 +194,7 @@ app.controller(
         $scope.openModal = (mode, quiz) => {
             $scope.mode = mode;
             if (mode === "create") {
+                $scope.resetDataCreate();
                 return;
             }
             if (mode === "edit") {
