@@ -66,7 +66,10 @@
                                 </td>
                                 <td ng-bind="quiz.level"></td>
                                 <td ng-bind="categoriesObj[quiz.category_id].name"></td>
-                                <td ng-bind="quiz.image_url"></td>
+                                <td >
+                                    <img src="@{{ quiz.image_link }}"
+                                        style="width: 300px; height: 160px; object-fit: cover;"  />
+                                </td>
                                 <td>
                                     <button
                                         data-toggle="modal" 
