@@ -10,7 +10,7 @@ class Quiz extends Model
     use HasFactory;
     protected $table = 'quiz';
     protected $fillable = [
-        'title', 'fact', 'category_id', 'level', 'language', 'nation'
+        'title', 'fact', 'category_id', 'level', 'language', 'nation', 'image_link'
     ];
 
     public function answers()

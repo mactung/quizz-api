@@ -56,6 +56,12 @@
                     ng-model="quiz.fact"
                 ></textarea>
             </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Image Link" 
+                    aria-label="Image Link" 
+                    aria-describedby="basic-addon2"
+                    ng-model="quiz.image_link">
+            </div>
 
         </div>
         <div  class="row">
