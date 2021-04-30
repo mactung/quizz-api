@@ -52,7 +52,7 @@
                                 <td ng-bind="quiz.id"></td>
                                 <td >
                                     <span class="font-weight-bold " ng-bind="quiz.title"></span>
-                                    <div class="mt-5"><span class="font-weight-bold">Level:<span> <span ng-bind="quiz.level"></span></div>
+                                    <div class="mt-5"><span class="font-weight-bold">Level:</span> <span ng-bind="quiz.level"></span></div>
                                     <div><span class="font-weight-bold">Category: </span><span ng-bind="categoriesObj[quiz.category_id].name"></span></div>
                                 </td>
                                 <td>
