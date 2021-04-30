@@ -42,8 +42,6 @@
                                 <th style="width: 30%">Title</th>
                                 <th style="width: 30%">Answers</th>
                                 <th style="width: 30%">Fact</th>
-                                <th>Level</th>
-                                <th style="width: 8%">Category</th>
                                 <th style="width: 15%">Image</th>
                                 <th style="width: 8%">Options</th>
                             </tr>
@@ -52,7 +50,11 @@
                         <tbody>
                             <tr ng-repeat="quiz in quizs track by $index">
                                 <td ng-bind="quiz.id"></td>
-                                <td ng-bind="quiz.title"></td>
+                                <td >
+                                    <span class="font-weight-bold " ng-bind="quiz.title"></span>
+                                    <div class="mt-5"><span class="font-weight-bold">Level:<span> <span ng-bind="quiz.level"></span></div>
+                                    <div><span class="font-weight-bold">Category: </span><span ng-bind="categoriesObj[quiz.category_id].name"></span></div>
+                                </td>
                                 <td>
                                     
                                     <div ng-repeat="answer in quiz.answers track by $index"> 
@@ -61,14 +63,13 @@
                                         @{{ answer.content }}
                                     </div>
                                 </td>
-                                <td>
-                                    <span style="height: 200px;" ng-bind="quiz.fact"></span>
+                                <td >
+                                    <div class="overflow-auto" style="height: 200px;" ng-bind="quiz.fact"></div>
                                 </td>
-                                <td ng-bind="quiz.level"></td>
-                                <td ng-bind="categoriesObj[quiz.category_id].name"></td>
+                                
                                 <td >
                                     <img src="@{{ quiz.image_link }}"
-                                        style="width: 300px; height: 160px; object-fit: cover;"  />
+                                        style="width: 200px; height: 110px; object-fit: cover;"  />
                                 </td>
                                 <td>
                                     <button
