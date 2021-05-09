@@ -101,6 +101,22 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="input-group mb-3 col-6">
+                <input type="text" class="form-control" placeholder="Author" 
+                    aria-label="author" 
+                    aria-describedby="basic-addon2"
+                    ng-model="quiz.author">
+                
+            </div>
+            <div class="input-group mb-3 col-6">
+                <input type="text" class="form-control" placeholder="Source" 
+                    aria-label="Author" 
+                    aria-describedby="basic-addon2"
+                    ng-model="quiz.source">
+                
+            </div>
+        </div>
     </div>
     <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
