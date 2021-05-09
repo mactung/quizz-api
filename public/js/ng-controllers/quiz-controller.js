@@ -15,6 +15,10 @@ app.controller(
         $scope.selectedCategory;
         $scope.selectedLevel;
         $scope.relatedQuizs = [];
+        $scope.meta = {
+            page_id: 0,
+            page_size: 10
+        };
         $scope.selectedNation = {
             value: "global",
             title: "Chung",
@@ -89,8 +93,16 @@ app.controller(
         $scope.getQuizs = () => {
             let filters = $scope.buildFilter();
             $http
-                .get("api/quiz?embeds=answers&filters=" + filters)
+                .get(
+                    "api/quiz?embeds=answers&filters=" +
+                        filters +
+                        "&page_size=" +
+                        $scope.meta.page_size +
+                        "&page_id=" +
+                        $scope.meta.page_id
+                )
                 .then((res) => {
+                    $scope.meta = res.data.meta;
                     $scope.quizs = res.data.result;
                 });
         };
@@ -293,6 +305,10 @@ app.controller(
                 }
             });
             return result;
+        };
+
+        $scope.find = () => {
+            $scope.getQuizs();
         };
 
         $scope.init();

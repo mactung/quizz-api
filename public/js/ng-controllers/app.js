@@ -11,12 +11,21 @@ function BaseController($scope, $http, $rootScope) {
     $scope.prev = () => {
         if ($scope.pageId > 0) {
             $scope.pageId--;
-            $scope.search();
+            $scope.find();
         }
     };
 
     $scope.next = () => {
         $scope.pageId++;
-        $scope.search();
+        $scope.find();
+    };
+
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
+
+    $scope.pageChanged = function (n) {
+        $scope.meta.pageId = n;
+        $scope.find();
     };
 }
